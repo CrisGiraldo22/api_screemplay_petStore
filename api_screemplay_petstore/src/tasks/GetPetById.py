@@ -1,6 +1,6 @@
 from src.abilities.CallApi import CallApi
 
-class DeletePet:
+class GetPetById:
     def __init__(self, pet_id):
         self.pet_id = pet_id
         self.response = None
@@ -8,6 +8,6 @@ class DeletePet:
     def perform_as(self, actor):
         api = actor.ability_to(CallApi)
         endpoint = f"/pet/{self.pet_id}"
-        self.response = api.session.delete(f"{api.base_url}{endpoint}")
+        self.response = api.get(endpoint)
         actor.last_response = self.response
-        print(f"Eliminó la mascota con id {self.pet_id} -> código {self.response.status_code}")    
+        print(f"Consulto la mascota con id {self.pet_id} -> {self.response.status_code}")    

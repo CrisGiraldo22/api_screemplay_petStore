@@ -12,6 +12,9 @@ class AddPet:
         payload = json.dumps(self.pet.dictionary())  
         headers = {"Content-Type":"application/json"}
 
-        self.response = api.session.post(f"{api.base_url}{endpoint}",data=payload, headers=headers)
+        self.response = api.session.post(
+            f"{api.base_url}{endpoint}",
+            json=self.pet.dictionary()
+        )
         actor.last_response = self.response
         print(f"Se creo la mascota '{self.pet.name}' con código {self.response.status_code}")

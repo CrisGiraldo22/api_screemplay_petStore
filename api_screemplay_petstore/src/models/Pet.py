@@ -1,4 +1,4 @@
-class pet:
+class Pet:
     def __init__(self, pet_id, name, status):
         self.id = pet_id
         self.name = name
